@@ -3,3 +3,12 @@
 В расчете необходимо использовать формулу: (выработка в часах*ставка в час) + премия.
 Для выполнения расчета для конкретных значений необходимо запускать скрипт с параметрами.
 """
+import sys
+
+_, work_hours, hour_cost, bonus = sys.argv
+
+salary = (float(hour_cost) * float(work_hours)) + float(bonus)
+
+print(f"Заработная плата = {salary}")
+
+# python lesson04/task01.py 8 1200 6500
