@@ -7,8 +7,30 @@
 
 Примеры строк файла:
 Информатика: 100(л) 50(пр) 20(лаб)
-Физика: 30(л) ​—​ 10(лаб)
-Физкультура: ​— 30(пр) —
+Физика: 30(л) - 10(лаб)
+Физкультура: - 30(пр) -
 
 Пример словаря: {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
+
+subjects = {}
+
+with open('task06.txt') as f:
+    for row in f:
+        subject_info = row.split()
+        name = subject_info[0].rstrip(':')
+
+        subjects[name] = subject_info[1:]
+
+result = {}
+
+for key, value in subjects.items():
+    result[key] = sum(
+        [
+            int(hours[:hours.index('(')])
+            for hours in value
+            if hours != '-'
+        ]
+    )
+
+print(result)
